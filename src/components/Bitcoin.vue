@@ -1,13 +1,15 @@
 <script setup>
     import { onMounted, ref } from "vue"
-    import { btcAllData } from "@/services/api/bitcoin.js"
+    import { btcAllData, btcLastData } from "@/services/api/bitcoin.js"
     import IconBitcoin from "@/components/icons/IconBitcoin.vue"
 
     const bitcoinAllData = ref([])
     const currencyName = ref("Bitcoin")
+    const bitcoinLastData = ref("")
 
     onMounted(async () => {
         bitcoinAllData.value = await btcAllData()
+        bitcoinLastData.value = await btcLastData()
     })
 </script>
 
@@ -24,10 +26,19 @@
     <div class="price-list">
         <div class="price-row" v-for="btc in bitcoinAllData">${{ btc.index_price }}</div>
     </div>
+
+    <h2>Last data</h2>
+    <div class="price-list last-data">
+        <div class="price-row">${{ bitcoinLastData.index_price }}</div>
+    </div>
 </template>
 
 <style scoped>
     h1 {
         margin: 20px;
+    }
+
+    .last-data {
+        margin-bottom: 30px;
     }
 </style>
