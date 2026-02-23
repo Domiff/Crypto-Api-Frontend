@@ -8,4 +8,9 @@ async function btcAllData() {
     return data.data
 }
 
-export { btcAllData }
+async function btcLastData() {
+    const data = await axios.get(urls.urlBase + urls.urlLastPrice + urlBtc)
+    return data.data
+}
+
+export { btcAllData, btcLastData }

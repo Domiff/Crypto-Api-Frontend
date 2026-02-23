@@ -8,4 +8,9 @@ async function ethAllData() {
     return data.data
 }
 
-export { ethAllData }
+async function ethLastData() {
+    const data = await axios.get(urls.urlBase + urls.urlLastPrice + urlEth)
+    return data.data
+}
+
+export { ethAllData, ethLastData }
