@@ -1,19 +1,19 @@
 <template>
     <div v-if="$route.fullPath === '/'">
         <main>
-            <RouterView/>
+            <RouterView />
         </main>
     </div>
 
     <div v-if="$route.fullPath === '/bitcoin'">
         <main>
-            <RouterView/>
+            <RouterView />
         </main>
     </div>
 
     <div v-if="$route.fullPath === '/ethereum'">
         <main>
-            <RouterView/>
+            <RouterView />
         </main>
     </div>
 </template>
