@@ -5,7 +5,7 @@ const urlEth = "?ticker=eth"
 
 async function ethAllData() {
     const data = await axios.get(urls.urlBase + urls.urlAllPrices + urlEth)
-    return data.data
+    return data.data.reverse()
 }
 
 async function ethLastData() {
