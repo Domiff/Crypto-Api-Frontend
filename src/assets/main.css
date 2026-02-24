@@ -113,6 +113,10 @@ svg {
     overflow: hidden;
 }
 
+.price-list:last-child {
+    margin-bottom: 30px;
+}
+
 .price-row {
     padding: 14px 18px;
     border-bottom: 1px solid var(--border);

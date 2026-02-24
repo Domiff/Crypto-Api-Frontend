@@ -28,7 +28,7 @@
     </div>
 
     <h2>Last data</h2>
-    <div class="price-list last-data">
+    <div class="price-list">
         <div class="price-row">${{ bitcoinLastData.index_price }}</div>
     </div>
 </template>
@@ -36,9 +36,5 @@
 <style scoped>
     h1 {
         margin: 20px;
-    }
-
-    .last-data {
-        margin-bottom: 30px;
     }
 </style>
