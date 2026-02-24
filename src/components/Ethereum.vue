@@ -4,7 +4,7 @@
     import IconEthereum from "@/components/icons/IconEthereum.vue"
 
     const ethereumAllData = ref([])
-    const currencyName = ref("Ethereum")
+    const currencyName = "Ethereum"
     const ethereumLastData = ref("")
 
     onMounted(async () => {

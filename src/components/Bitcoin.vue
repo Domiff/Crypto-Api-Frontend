@@ -4,7 +4,7 @@
     import IconBitcoin from "@/components/icons/IconBitcoin.vue"
 
     const bitcoinAllData = ref([])
-    const currencyName = ref("Bitcoin")
+    const currencyName = "Bitcoin"
     const bitcoinLastData = ref("")
 
     onMounted(async () => {
