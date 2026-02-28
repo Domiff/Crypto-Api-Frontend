@@ -24,7 +24,9 @@
     <h2>Data for all time</h2>
 
     <div class="price-list">
-        <div class="price-row" v-for="btc in bitcoinAllData">${{ btc.index_price }}</div>
+        <div class="price-row" v-for="btc in bitcoinAllData" :key="btc.id">
+            ${{ btc.index_price }}
+        </div>
     </div>
 
     <h2>Last data</h2>

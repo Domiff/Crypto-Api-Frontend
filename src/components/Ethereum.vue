@@ -24,7 +24,9 @@
     <h2>Data for all time</h2>
 
     <div class="price-list">
-        <div class="price-row" v-for="eth in ethereumAllData">${{ eth.index_price }}</div>
+        <div class="price-row" v-for="eth in ethereumAllData" :key="eth.id">
+            ${{ eth.index_price }}
+        </div>
     </div>
 
     <h2>Last data</h2>
