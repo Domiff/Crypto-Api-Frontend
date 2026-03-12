@@ -1,5 +1,6 @@
 import axios from "axios"
 import { urls } from "./urls.js"
+import { buildUrl } from "@/services/api/utils.js"
 
 const urlEth = "?ticker=eth"
 
@@ -13,4 +14,10 @@ async function ethLastData() {
     return data.data
 }
 
-export { ethAllData, ethLastData }
+async function ethFilteredData(start, end) {
+    const url = buildUrl(urls.urlBase, urls.urlDateFilter, urlEth, start, end)
+    const data = await axios.get(url)
+    return data.data.reverse()
+}
+
+export { ethAllData, ethLastData, ethFilteredData }

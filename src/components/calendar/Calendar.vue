@@ -1,13 +1,14 @@
 <script setup>
-    import {ref, watch} from "vue"
-    import {VueDatePicker} from "@vuepic/vue-datepicker"
-    import '@vuepic/vue-datepicker/dist/main.css'
+    import { ref, watch } from "vue"
+    import { VueDatePicker } from "@vuepic/vue-datepicker"
+    import "@vuepic/vue-datepicker/dist/main.css"
 
     const date = ref()
-    const emit = defineEmits(['response'])
+    const emit = defineEmits(["start", "end"])
 
     watch(date, (newDate) => {
-        emit('response', newDate.value)
+        emit("start", newDate)
+        emit("end", newDate)
     })
 </script>
 
