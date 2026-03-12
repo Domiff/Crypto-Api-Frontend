@@ -69,20 +69,6 @@ nav a:hover {
     transform: translateY(-2px);
 }
 
-nav div {
-    background: var(--card);
-    padding: 22px 36px;
-    border-radius: 14px;
-    border: 1px solid var(--border);
-    transition: 0.25s;
-}
-
-nav div:hover {
-    transform: translateY(-6px);
-    border-color: var(--accent2);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-}
-
 @keyframes fade {
     from {
         opacity: 0;
