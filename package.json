@@ -9,7 +9,17 @@
         "preview": "vite preview",
         "lint": "eslint . --fix",
         "format": "prettier --write \"src/**/*.{js,vue,css,scss,hmtl}\"",
-        "format:html": "prettier --write \"**/*.html\""
+        "format:html": "prettier --write \"**/*.html\"",
+        "prepare": "husky"
+    },
+    "lint-staged": {
+        "*.{js,vue}": [
+            "eslint --fix",
+            "prettier --write"
+        ],
+        "*.{json,css,md}": [
+            "prettier --write"
+        ]
     },
     "dependencies": {
         "@vuepic/vue-datepicker": "^12.1.0",
@@ -24,6 +34,8 @@
         "eslint-config-prettier": "^10.1.8",
         "eslint-plugin-vue": "~10.8.0",
         "globals": "^17.3.0",
+        "husky": "^9.1.7",
+        "lint-staged": "^16.3.3",
         "npm-run-all2": "^8.0.4",
         "prettier": "3.8.1",
         "vite": "^7.3.1",
