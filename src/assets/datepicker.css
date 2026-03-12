@@ -1,0 +1,208 @@
+.dp__theme_dark {
+    --dp-background-color: var(--card);
+    --dp-text-color: var(--text);
+    --dp-border-color: var(--border);
+    --dp-hover-color: rgba(255, 255, 255, 0.06);
+
+    --dp-primary-color: var(--accent);
+    --dp-primary-text-color: #fff;
+    --dp-time-font-size: 28px;
+    --dp-overlay-height: auto;
+}
+
+.dp__main {
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.dp__input_wrap {
+    width: auto;
+    display: inline-block;
+}
+
+.dp__input {
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 10px 14px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 260px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.dp__input::placeholder {
+    color: var(--muted);
+}
+
+.dp__input:focus {
+    border-color: var(--accent);
+    outline: none;
+    box-shadow: 0 0 0 1px rgba(138, 180, 248, 0.35);
+}
+
+.dp__menu {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    color: var(--text);
+    padding: 10px 12px 12px;
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+.dp__menu_inner,
+.dp__inner_menu,
+.dp__calendar_wrap,
+.dp__overlay,
+.dp__overlay_container {
+    background: var(--card) !important;
+}
+
+.dp__calendar {
+    gap: 4px;
+}
+
+.dp__month_year_row,
+.dp__month_year_wrap,
+.dp__calendar_header {
+    color: var(--text);
+}
+
+.dp__month_year_row {
+    padding: 6px 4px 2px;
+}
+
+.dp__month_year_select {
+    font-weight: 500;
+}
+
+.dp__arrow_top,
+.dp__arrow_bottom {
+    border-color: var(--accent);
+}
+
+.dp__month_year_col_nav {
+    border-radius: 999px;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.dp__month_year_col_nav:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.dp__calendar_header {
+    padding: 0 4px;
+}
+
+.dp__week_day {
+    color: var(--muted);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.dp__cell_inner {
+    color: var(--text);
+    border-radius: 8px;
+    transition: background-color 0.12s ease, color 0.12s ease, transform 0.12s ease;
+}
+
+.dp__cell_inner:hover {
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateY(-1px);
+}
+
+.dp__active_date {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: white;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+}
+
+.dp__today {
+    border: 1px solid var(--accent2);
+}
+
+.dp__cell_disabled {
+    opacity: 0.35;
+}
+
+.dp__time_picker {
+    background: #060811 !important;
+    border-top: 1px solid var(--border);
+    border-radius: 0 0 12px 12px;
+    padding: 8px 10px 10px;
+}
+
+.dp__time_picker_inline_container {
+    background: transparent !important;
+    gap: 12px;
+}
+
+.dp__time_display {
+    background: transparent !important;
+    color: var(--muted);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    padding-bottom: 6px;
+    font-size: 13px;
+}
+
+.dp__time_separator {
+    color: var(--accent2);
+}
+
+.dp__time_col {
+    background: rgba(255, 255, 255, 0.02) !important;
+    color: var(--text);
+    border-radius: 12px;
+    padding: 6px 2px;
+}
+
+.dp__time_col_reg {
+    background: transparent;
+    color: var(--text);
+    border-radius: 999px;
+    transition: background-color 0.12s ease, color 0.12s ease, transform 0.12s ease;
+}
+
+.dp__time_input,
+.dp__time_col_block,
+.dp__time_display {
+    font-size: 24px !important;
+}
+
+.dp__action_row {
+    padding: 4px 10px 8px;
+}
+
+.dp__time_col_reg:hover {
+    background: rgba(255, 255, 255, 0.09);
+    transform: translateY(-1px);
+}
+
+.dp__active {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: white;
+}
+
+.dp__tp_arrow_btn {
+    background: transparent;
+    color: var(--muted);
+    transition: color 0.12s ease, background-color 0.12s ease;
+    border-radius: 999px;
+}
+
+.dp__tp_arrow_btn:hover {
+    color: var(--accent);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.dp__menu ::-webkit-scrollbar {
+    width: 6px;
+}
+
+.dp__menu ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 6px;
+}
