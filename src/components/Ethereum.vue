@@ -45,7 +45,7 @@
     <h2>Data for all time</h2>
 
     <div class="price-list">
-        <div class="price-row" v-for="eth in ethereumAllData" :key="eth.id">
+        <div class="price-row" v-for="eth in ethereumAllData" v-bind:key="eth.id">
             ${{ eth.index_price }}
         </div>
     </div>
@@ -63,7 +63,7 @@
     </div>
 
     <div class="price-list">
-        <div class="price-row" v-for="eth in ethereumFilteredData" :key="eth.id">
+        <div class="price-row" v-for="eth in ethereumFilteredData" v-bind:key="eth.id">
             ${{ eth.index_price }}
         </div>
     </div>

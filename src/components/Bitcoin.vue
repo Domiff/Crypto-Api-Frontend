@@ -45,7 +45,7 @@
     <h2>Data for all time</h2>
 
     <div class="price-list">
-        <div class="price-row" v-for="btc in bitcoinAllData" :key="btc.id">
+        <div class="price-row" v-for="btc in bitcoinAllData" v-bind:key="btc.id">
             ${{ btc.index_price }}
         </div>
     </div>
@@ -63,7 +63,7 @@
     </div>
 
     <div class="price-list">
-        <div class="price-row" v-for="btc in bitcoinFilteredData" :key="btc.id">
+        <div class="price-row" v-for="btc in bitcoinFilteredData" v-bind:key="btc.id">
             ${{ btc.index_price }}
         </div>
     </div>
