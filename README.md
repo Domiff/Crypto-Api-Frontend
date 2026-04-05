@@ -1,49 +1,113 @@
 # Crypto Price Tracker — Frontend
 
-Фронтенд для **Crypto Price Tracker** — SPA на **Vue 3** с использованием **Vue Router** для навигации.
-Приложение позволяет отображать получение:
+A **Vue 3** single-page app for viewing cryptocurrency price data from a companion backend. **Vue Router** handles navigation between the home screen and per-asset detail pages; **Axios** calls REST endpoints for full history, the latest quote, and date-filtered series.
 
-- всех сохраненных данных по валюте.
-- последней цены валюты.
-- данных по валюте с фильтром по дате.
+## Features
 
----
+- **Home**: entry point with links to Bitcoin and Ethereum views.
+- **Per-asset pages** (Bitcoin / Ethereum): list of stored prices, latest price, and a date-range filter (calendar + fetch) for historical slices.
+- **API layer**: small modules under `src/services/api/` with shared base URL and paths.
 
-## Функциональность
+## Tech stack
 
-1. **Главная страница**
-    - Отображение последних цен `BTC_USD` и `ETH_USD`.
-    - Кнопка обновления данных вручную.
-    - Автообновление каждые 60 секунд (синхронизация с бэкендом).
+| Layer       | Technologies                         |
+| ----------- | ------------------------------------ |
+| UI          | Vue 3, Vue Router 5                  |
+| HTTP        | Axios                                |
+| Date picker | @vuepic/vue-datepicker               |
+| Build       | Vite 7                               |
+| Quality     | ESLint, Prettier, Husky, lint-staged |
 
-2. **Навигация**
-    - Vue Router обеспечивает удобную навигацию между страницами: Главная → История.
+## Application structure
 
----
+### Architecture
 
-## Технологии и зависимости
+```mermaid
+flowchart LR
+    subgraph spa["Browser"]
+        V[Vue 3 + Vue Router]
+    end
 
-- **Vue 3** — основной фреймворк.
-- **Vue Router 5** — маршрутизация.
-- **Axios** — HTTP-клиент для взаимодействия с API.
-- **Vite** — сборка и разработка.
-- **ESLint, Prettier** — линтинг и форматирование кода.
+    subgraph http["Client"]
+        A[Axios]
+    end
 
----
+    subgraph api["Backend"]
+        B[REST API]
+    end
+
+    V --> A
+    A -->|JSON| B
+```
+
+### Repository tree
+
+```text
+.
+├── src/
+│   ├── App.vue
+│   ├── main.js
+│   ├── router/
+│   │   └── index.js                 # Routes: /, /bitcoin, /ethereum
+│   ├── components/
+│   │   ├── HomePage.vue
+│   │   ├── Bitcoin.vue
+│   │   ├── Ethereum.vue
+│   │   ├── calendar/
+│   │   │   └── Calendar.vue
+│   │   └── icons/
+│   │       ├── IconBitcoin.vue
+│   │       └── IconEthereum.vue
+│   └── services/
+│       └── api/
+│           ├── urls.js              # Base URL and path segments
+│           ├── bitcoin.js
+│           ├── ethereum.js
+│           └── utils.js
+├── eslint.config.js
+├── vite.config.js
+└── package.json
+```
 
 ## Design decisions
 
-1. **SPA с Vue Router**
-    - Позволяет динамически переключаться между страницами без перезагрузки.
+1. **SPA with Vue Router** — switch views without full page reloads; URLs map directly to Bitcoin and Ethereum screens.
+2. **Axios** — shared HTTP client for backend calls; paths and base URL live in one place (`urls.js`).
+3. **Vite** — fast dev server and production builds aligned with the Vue 3 toolchain.
+4. **ESLint + Prettier** — consistent style; hooks can enforce checks on commit.
 
-2. **Axios**
-    - Удобный клиент для взаимодействия с API бэкенда.
+## Requirements
 
-3. **Auto-update**
-    - Каждую минуту приложение автоматически обновляет данные, синхронизируясь с бэкендом.
+- **Node.js** `^20.19.0` or `>=22.12.0` (see `package.json` → `engines`)
+- A running **backend** that exposes the API expected by `src/services/api/urls.js` (default origin `http://127.0.0.1:8080`)
 
-4. **Линтинг и форматирование**
-    - ESLint + Prettier обеспечивают единый стиль кода и автоматическое исправление ошибок.
+## Configuration
 
-5. **Vite**
-    - Быстрая сборка и современный дев-сервер для разработки.
+Point the frontend at your API by editing `src/services/api/urls.js`:
+
+| Export / field                                  | Role                                                                       |
+| ----------------------------------------------- | -------------------------------------------------------------------------- |
+| `urlBase`                                       | API origin (no trailing path segment for resource roots in `utils.js`)     |
+| `urlAllPrices`, `urlLastPrice`, `urlDateFilter` | Path segments appended to `urlBase` for list, latest, and filtered queries |
+
+Keep the backend CORS settings aligned with your Vite dev origin (typically `http://localhost:5173`).
+
+## Local development
+
+Install dependencies and start the dev server:
+
+```bash
+npm install
+npm run dev
+```
+
+Other scripts:
+
+| Script  | Command           | Purpose              |
+| ------- | ----------------- | -------------------- |
+| Build   | `npm run build`   | Production bundle    |
+| Preview | `npm run preview` | Serve built output   |
+| Lint    | `npm run lint`    | ESLint with fixes    |
+| Format  | `npm run format`  | Prettier for `src/*` |
+
+Ensure the backend is reachable at the URL configured in `urls.js` before using the app.
