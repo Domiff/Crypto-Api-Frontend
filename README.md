@@ -20,26 +20,6 @@ A **Vue 3** single-page app for viewing cryptocurrency price data from a compani
 
 ## Application structure
 
-### Architecture
-
-```mermaid
-flowchart LR
-    subgraph spa["Browser"]
-        V[Vue 3 + Vue Router]
-    end
-
-    subgraph http["Client"]
-        A[Axios]
-    end
-
-    subgraph api["Backend"]
-        B[REST API]
-    end
-
-    V --> A
-    A -->|JSON| B
-```
-
 ### Repository tree
 
 ```text
